@@ -2,6 +2,7 @@
 
 ## Design Patterns & Slash Commands
 - `/boost`: Deep cognitive deliberation using Tree-of-Thoughts and multi-perspective expert debate before tackling complex, high-risk tasks.
+- `/clear-writing`: Write, explain, or edit prose across any subject with maximum clarity and zero fluff. Blends ASD-STE100 Simplified Technical English clarity rules with Andrej Karpathy's pragmatic builder communication style. Features dual modes: default direct explanation (objective, active, <=25 words/sentence) and first-person builder/essay mode (grounded in hands-on work, honest hedging, dry wit, and quantitative precision).
 - `/code-review`: Adversarial multi-lens code review. Evaluates pull requests or git diffs across correctness, security, concurrency, performance, and maintainability.
 - `/goal`: Autonomous long-running execution loop. Drives complex objectives to completion using step budgets, empirical verification oracles, and state checkpointing.
 - `/grill-me`: Interactive requirements elicitation interview. Walks down each branch of the design tree, resolving dependencies between decisions one-by-one with recommended options.

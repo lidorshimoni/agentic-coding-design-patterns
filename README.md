@@ -34,6 +34,7 @@ flowchart LR
         GD["/grill-me-with-docs<br/><i>(Grounded Inquiry)</i>"]
         S["/to-spec<br/><i>(RFC 2119 PRD)</i>"]
         T["/to-tickets<br/><i>(DAG Decomposition)</i>"]
+        CW["/clear-writing<br/><i>(Empirical Clarity)</i>"]
     end
 
     subgraph Execution["2. Execution & Quality"]
@@ -58,6 +59,7 @@ flowchart LR
 
 | Command | Category | Purpose | Theoretical & Industry Basis |
 | :--- | :--- | :--- | :--- |
+| **`/clear-writing`** | Communication | Fluff-free technical explanations & builder writeups (ASD-STE100 + Karpathy style). | ASD-STE100 Issue 9; Karpathy Builder Ethos |
 | **`/grill-me`** | Discovery | Interactive requirements interview; walks down the design tree resolving decisions one-by-one. | Socratic Method; Domain-Driven Design (Evans) |
 | **`/grill-me-with-docs`** | Discovery | Pre-retrieves official library documentation before asking technical architecture questions. | Retrieval-Augmented Generation (Lewis et al.) |
 | **`/to-spec`** | Discovery | Converts requirements and transcripts into an RFC-grade specification with strict boundaries. | RFC 2119 (Bradner); Amazon PR/FAQ; ADR (Nygard) |

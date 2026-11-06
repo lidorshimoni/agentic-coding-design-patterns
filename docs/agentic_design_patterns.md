@@ -23,6 +23,7 @@ flowchart TD
         Grill["Socratic Elicitation (/grill-me)"]
         Spec["Spec-Driven Development (/to-spec)"]
         Decomp["DAG Decomposition (/to-tickets)"]
+        Writing["Empirical Clarity & ASD-STE100 (/clear-writing)"]
     end
 
     subgraph Execution["2. Execution & Feedback"]
@@ -56,6 +57,11 @@ flowchart TD
 - **Academic / Industry Basis**: RFC 2119 Normative Keywords (Bradner, 1997); Amazon PR/FAQ Process; Architecture Decision Records (Nygard, 2011).
 - **Core Mechanism**: Converts unstructured thoughts or interview transcripts into an authoritative specification. Mandates explicit sections: Problem Statement, Goals vs. Non-Goals, Normative Requirements (`MUST`, `SHOULD`, `MAY`), Component Diagram, Schema Contracts, and Rollback Procedures.
 - **Why it Matters**: Creates an immutable contract that serves as the objective source of truth for both implementation and review.
+
+### Pattern B.1: Empirical Clarity & Controlled Technical Prose (`/clear-writing`)
+- **Academic / Industry Basis**: ASD-STE100 Simplified Technical English (Issue 9, 2025); Andrej Karpathy's Builder Communication Ethos (*"Curious. Built it. Write it up."*).
+- **Core Mechanism**: Eliminates corporate fluff, marketing buzzwords, and decorative filler across technical explanations and engineering writeups. Operates in dual modes: Mode 1 Direct Explanation ($\le$25 words/sentence, active voice, prerequisite before action) and Mode 2 First-Person Builder Retrospective (empirical measurements, honest epistemic hedging, dry wit, and quantitative precision).
+- **Why it Matters**: Dramatically reduces reader cognitive load, prevents misinterpretation of critical architecture, and ensures agents communicate with high signal-to-noise ratio.
 
 ### Pattern C: Directed Acyclic Graph (DAG) Task Decomposition (`/to-tickets`)
 - **Academic / Industry Basis**: Work Breakdown Structures (WBS); Kahn's Algorithm for Topological Sorting; Behavior-Driven Development (North, 2006).
