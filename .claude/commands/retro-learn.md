@@ -1,0 +1,51 @@
+# /retro-learn - Post-session reflection and continual learning. Extracts lessons from errors, user corrections, and project patterns to update persistent harness rules.
+
+Run the following workflow instructions for the provided input: $ARGUMENTS
+
+# Retro-Learn: Continual Learning & Rule Distillation Pattern
+
+## Intent
+Analyze the recent interactive session, debugging trail, tool failures, or explicit user corrections to distill permanent, reusable lessons. Update the repository's harness rules to ensure future agent sessions never repeat the same mistakes.
+
+## Theoretical Foundation
+Inspired by the **Voyager Skill Library** (Wang et al., 2023) and **MemGPT / Persistent Context Engineering** (Packer et al., 2023). Agents lack persistent weight updates across sessions; their memory resides in repository context files (`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `.clinerules`). Distilling atomic guidelines into these files creates an evolutionary learning loop.
+
+## Operational Workflow
+
+### Step 1: Retrospective Trajectory Analysis
+Inspect the session transcript or conversation history for:
+1. **User Corrections**: Direct statements where the user had to correct an assumption, style choice, or architectural decision.
+2. **Tool / Command Failures**: Shell commands that failed due to environment assumptions (e.g. wrong package manager, missing environment variables, port conflicts).
+3. **Flaky Tests & Bug Reversals**: Code that had to be rewritten after initial attempts broke tests.
+
+### Step 2: Lesson Distillation & Generalization
+Convert transient mistakes into generalized, actionable rules following these criteria:
+- **Concise & Imperative**: Use direct instructions (e.g., *"Always pass `--frozen-lockfile` to pnpm"* rather than *"I learned that pnpm fails unless..."*).
+- **Non-Redundant**: Verify that the rule does not already exist in the harness rule file.
+- **Root Cause Focused**: Target the systemic reason the mistake occurred.
+- **Token Budget Conscious**: Keep additions strictly under 3 sentences to avoid context window bloat.
+
+### Step 3: Harness Target Identification & Update
+Identify which harness memory file is in use and append the distilled rule under the appropriate section:
+
+| Harness | Target Memory File | Section |
+| :--- | :--- | :--- |
+| **Claude Code** | `CLAUDE.md` | `## Guidelines & Idioms` |
+| **Antigravity / AGY** | `GEMINI.md` or `.agents/rules/*.md` | `## Project Idioms` |
+| **Cursor** | `.cursor/rules/*.mdc` or `.cursorrules` | Relevant rule category |
+| **Roo / Cline** | `.clinerules` | `## Learned Conventions` |
+| **Windsurf** | `.windsurfrules` | `## Project Rules` |
+| **Universal / Copilot** | `.github/copilot-instructions.md` | `## Coding Standards` |
+
+### Step 4: Verification & User Confirmation
+- Present the extracted rules to the user.
+- Show the unified diff before modifying the memory file.
+- Confirm that the rule accurately reflects user expectations and project standards.
+
+---
+
+## Citations & Provenance
+1. **Voyager Skill Library**: Wang, G., Xie, Y., Jiang, Y., Mandlekar, A., Xiao, C., Zhu, Y., Fan, L., & Anandkumar, A. (2023). *Voyager: An Open-Ended Embodied Agent with Large Language Models*. arXiv:2305.16291.
+2. **Persistent Memory in Language Agents**: Packer, C., Fang, V., Shlapentokh-Rothman, S. G., Shakir, K., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as Operating Systems*. arXiv:2310.08560.
+3. **Claude Code Memory Architecture**: Anthropic Engineering (2025). *Memory Systems and Persistent Project Conventions in Claude Code*.
+4. **Antigravity Rule Evolution**: Google DeepMind (2024). *Antigravity Customization System: Dynamic Rule & Skill Accumulation*.

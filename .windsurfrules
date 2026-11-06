@@ -1,0 +1,810 @@
+# Windsurf Cascade Rules & Agentic Patterns
+
+## Available Workflows & Slash Commands
+### `/boost`
+Description: Deep cognitive deliberation using Tree-of-Thoughts and multi-perspective expert debate before tackling complex, high-risk tasks.
+
+# Boost: Tree-of-Thoughts & Cognitive Deliberation Pattern
+
+## Intent
+Before executing high-risk, irreversible, or highly complex engineering operations, pause rapid execution and conduct deep, multi-perspective deliberation to explore divergent paths, uncover non-obvious traps, and synthesize the highest-leverage solution.
+
+## Theoretical Foundation
+Synthesizes the **Tree of Thoughts (ToT)** framework (Yao et al., 2023) and **Society of Mind / Multi-Persona Debate** (Minsky, 1986; Du et al., 2023). By forcing deliberation across orthogonal engineering priorities (velocity, correctness, security, operability), agents avoid premature convergence on naive solutions.
+
+## Operational Workflow
+
+### Step 1: Deliberation Setup
+Identify the core technical challenge, unknowns, and critical constraints.
+
+### Step 2: Multi-Persona Perspective Synthesis
+Examine the problem through four distinct senior engineering lenses:
+
+1. **The Principal System Architect**:
+   - Focus: Long-term maintainability, clean separation of concerns, abstraction boundaries, extensibility.
+   - Question: *How does this change impact the system architecture 12 months from now?*
+
+2. **The Adversarial Security Auditor**:
+   - Focus: Attack surfaces, threat vectors, privilege escalation, injection risks, secret exposure.
+   - Question: *How could a malicious actor exploit this design or its dependencies?*
+
+3. **The Production SRE / Operability Lead**:
+   - Focus: Observability, telemetry, latency, resource consumption, partial outages, failover recovery.
+   - Question: *How will we know this is failing in production at 3:00 AM, and how do we roll back?*
+
+4. **The Pragmatic Staff Hacker**:
+   - Focus: Velocity, simplicity, avoiding over-engineering, YAGNI (You Aren't Gonna Need It), minimal diff.
+   - Question: *What is the simplest 20% effort that yields 80% of the value without unnecessary bloat?*
+
+### Step 3: Comparative Decision Matrix
+Compare 2 to 3 candidate strategies against the perspectives:
+
+| Evaluation Criteria | Strategy A: Minimalist | Strategy B: Full Refactor | Strategy C: Adapter Pattern |
+| :--- | :--- | :--- | :--- |
+| **Correctness & Robustness** | High | Very High | High |
+| **Blast Radius / Risk** | Very Low | High | Low |
+| **Implementation Complexity** | Low | High | Medium |
+| **Operability & Observability**| Medium | High | High |
+
+### Step 4: Synthesis & Execution Plan
+1. Formulate the consensus recommendation combining the best elements of each perspective.
+2. Explicitly document trade-offs accepted.
+3. Output the optimized, de-risked implementation plan and proceed to execution.
+
+---
+
+## Citations & Provenance
+1. **Tree of Thoughts**: Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., & Narasimhan, K. (2023). *Tree of Thoughts: Deliberate Problem Solving with Large Language Models*. NeurIPS 2023. arXiv:2305.10601.
+2. **Multiagent Debate**: Du, Y., Li, S., Torralba, A., Tenenbaum, J. B., & Mordatch, I. (2023). *Improving Factuality and Reasoning in Language Models through Multiagent Debate*. arXiv:2305.14325.
+3. **Society of Mind**: Minsky, M. (1986). *The Society of Mind*. Simon & Schuster.
+4. **Antigravity Cognitive Boost**: Google DeepMind (2024). *Antigravity Slash Command Architecture: /boost Deliberative Engine*.
+
+---
+
+### `/code-review`
+Description: Adversarial multi-lens code review. Evaluates pull requests or git diffs across correctness, security, concurrency, performance, and maintainability.
+
+# Code-Review: Adversarial Multi-Lens Code Review Pattern
+
+## Intent
+Conduct a rigorous, senior-staff-level architectural and security code review on proposed changes or git diffs before merging. Surface hidden bugs, performance bottlenecks, race conditions, and architectural drift.
+
+## Theoretical Foundation
+Rooted in formal inspection methods (Fagan Inspection) and Google's Engineering Practices on Code Review. Instead of vague approval, the reviewer adopts an adversarial posture, methodically examining the diff through specialized analytical lenses.
+
+## Operational Workflow
+
+### Step 1: Diff & Scope Extraction
+1. Inspect the git diff against the target branch (e.g. `main` or `master`):
+   \`\`\`bash
+   git diff main...HEAD
+   \`\`\`
+2. Check git status to ensure working directory is clean.
+3. Identify all modified, added, and deleted files.
+
+### Step 2: Multi-Lens Evaluation Matrix
+Evaluate the changes systematically against six core dimensions:
+
+| Lens | Focus Areas | Key Verification Questions |
+| :--- | :--- | :--- |
+| **1. Correctness & Invariants** | Logic, edge cases, contracts, nullability | Does the code violate any domain invariants? Are boundary conditions handled (0, empty, max limits)? |
+| **2. Security & Safety** | OWASP Top 10, sanitization, secrets, permissions | Are user inputs sanitized? Are SQL queries parameterized? Are sensitive values exposed in logs? |
+| **3. Concurrency & State** | Race conditions, deadlocks, shared mutable state | Is mutable state thread-safe? Are asynchronous operations awaited properly? Are DB transactions atomic? |
+| **4. Performance & Complexity** | Time/space complexity, N+1 queries, memory leaks | What is the algorithmic complexity ($O(N)$ vs $O(N^2)$)? Are database queries indexed? Are streams/buffers closed? |
+| **5. Resilience & Errors** | Graceful degradation, circuit breakers, error typing | Are errors caught with typed exceptions? Is diagnostic context logged? Is fallback behavior defined? |
+| **6. Testing & Coverage** | Regression tests, mocking boundaries, flakiness | Are negative paths and failure modes tested? Are unit tests decoupled from implementation details? |
+
+### Step 3: Findings Classification & Reporting
+Group all observations using standard severity tags:
+- `[BLOCKER]`: Critical bug, security vulnerability, data loss risk, or broken contract. Must be resolved before merge.
+- `[WARNING]`: Suboptimal pattern, performance concern, or missing edge case test. Strong recommendation.
+- `[NIT]`: Minor styling, naming, or readability improvement. Optional.
+- `[PRAISE]`: Commend particularly elegant, robust, or clever implementations.
+
+### Step 4: Line-by-Line Remediation Diff
+For every `[BLOCKER]` or `[WARNING]`, provide:
+1. Exact file path and line number range.
+2. Root cause explanation of the risk.
+3. Drop-in replacement code snippet.
+
+---
+
+## Citations & Provenance
+1. **Formal Inspection Methodology**: Fagan, M. E. (1976). *Design and code inspections to reduce errors in program development*. IBM Systems Journal, 15(3), 182-211.
+2. **Google Engineering Practices**: Google Engineering (2020). *Google's Code Review Developer Guide* (https://google.github.io/eng-practices/review/).
+3. **Application Security Standards**: OWASP Foundation (2021). *OWASP Top Ten Web Application Security Risks*.
+4. **Automated Static Analysis Principles**: McConnell, S. (2004). *Code Complete (2nd ed.)*. Microsoft Press.
+
+---
+
+### `/goal`
+Description: Autonomous long-running execution loop. Drives complex objectives to completion using step budgets, empirical verification oracles, and state checkpointing.
+
+# Goal: Autonomous Long-Running Execution Loop Pattern
+
+## Intent
+Execute an ambitious, multi-step engineering objective end-to-end without stopping for hand-holding, continuously planning, executing, evaluating, and self-correcting until an unambiguous empirical verification condition is satisfied.
+
+## Theoretical Foundation
+Rooted in the **ReAct (Reason + Act)** framework (Yao et al., 2022) and **AWS Prescriptive Guidance: Agentic Loops & Deterministic Overrides**. Autonomous execution requires three non-negotiable guardrails:
+1. An objective **Verification Oracle** (the definition of done).
+2. A strict **Step Budget** to prevent infinite loops and runaway token usage.
+3. Persistent **State Checkpoints** to enable recovery from dead ends.
+
+## Operational Workflow
+
+### Step 1: Goal Formalization & Oracle Definition
+Define the objective using three strict parameters:
+1. **Objective Statement**: Unambiguous description of the target state.
+2. **Verification Oracle**: The exact command or programmatic check that returns exit code 0 when, and only when, the goal is fully accomplished (e.g. `npm run test:e2e && npm run build`).
+3. **Step Budget**: Maximum number of tool iterations / cycles (default: 25).
+
+### Step 2: The Agentic Execution Loop
+Repeat the following cycle until completion or budget exhaustion:
+
+```mermaid
+flowchart TD
+    A[Read Current State] --> B{Oracle Verified?}
+    B -- Yes --> C[Goal Achieved & Report]
+    B -- No --> D{Budget Remaining?}
+    D -- No --> E[Halt with Progress Report]
+    D -- Yes --> F[Synthesize Next Action]
+    F --> G[Execute Action]
+    G --> H[Observe Output & Error State]
+    H --> I[Update Scratchpad / Checkpoint]
+    I --> A
+```
+
+### Step 3: Self-Correction Protocol
+- If a command fails or a test is broken, do NOT retry the identical action.
+- Analyze the error trace, form a new hypothesis, make an adjusting edit, and re-test.
+- If two consecutive attempts fail the same way, backtrack to the last known working git commit:
+  \`\`\`bash
+  git checkout <last-working-checkpoint>
+  \`\`\`
+
+### Step 4: Completion Criteria
+The loop terminates successfully ONLY when the Verification Oracle command executes cleanly with exit code 0 and passes all regression checks. Provide a summary artifact detailing all changes made and test outputs.
+
+---
+
+## Citations & Provenance
+1. **ReAct Paradigm**: Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. International Conference on Learning Representations (ICLR 2023). arXiv:2210.03629.
+2. **AWS Agentic Guidance**: Amazon Web Services Architecture Team (2024). *Agentic Design Patterns: Deterministic Overrides, Loop Budgets, and Termination Conditions*. AWS Prescriptive Guidance.
+3. **SWE-bench Benchmark**: Jimenez, C. E., et al. (2024). *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?*. ICLR 2024. arXiv:2310.06770.
+
+---
+
+### `/grill-me`
+Description: Interactive requirements elicitation interview. Walks down each branch of the design tree, resolving dependencies between decisions one-by-one with recommended options.
+
+# Grill-Me: Socratic Requirements Elicitation Pattern
+
+## Intent
+Before writing any code or architecture documents, systematically interview the user to resolve ambiguities, technical trade-offs, and design dependencies. Avoid assumptions by walking down the decision tree one branch at a time.
+
+## Theoretical Foundation
+Grounded in Socratic dialogue, DDD (Domain-Driven Design) ubiquitous language discovery, and decision-tree traversal. By resolving root architectural dependencies before leaf implementations, rework is minimized.
+
+## Operational Workflow
+
+### Step 1: Codebase & Context Exploration (Silent Pre-check)
+- Before asking the user any question, inspect the repository to see if the answer is already dictated by existing patterns, frameworks, dependencies, or configuration.
+- If existing code already provides an unambiguous answer, adopt it silently and do not waste user attention.
+
+### Step 2: Establish the Decision Tree
+Map out the required architectural decisions and their dependency order:
+1. **Core Domain & Boundaries**: What problem is being solved? What is explicitly out of scope?
+2. **Architecture & Storage**: Where does data live? How is state managed?
+3. **Contracts & Interfaces**: API formats, data schemas, communication protocols.
+4. **Execution & Runtime**: Libraries, frameworks, performance budgets.
+5. **Edge Cases & Failure Modes**: Error handling, fallbacks, recovery.
+
+### Step 3: Interactive Interview Protocol
+Execute the interview following strict operational rules:
+1. **One Question at a Time**: Never overwhelm the user with multi-part questions or lists of open-ended queries. Focus on the immediate next decision node.
+2. **Provide Concrete Options**: Offer 2 to 4 distinct, mutually exclusive choices.
+3. **Always Recommend**: Mark the first option with `(Recommended)` and briefly state the technical justification.
+4. **Resolve Dependencies Top-Down**: Do not ask about UI styling before API contracts are agreed upon; do not ask about database schema before storage technology is selected.
+5. **Acknowledge and Advance**: When the user answers, record the decision, prune invalid branches of the tree, and immediately advance to the next dependent question.
+
+### Step 4: Completion & Transition
+When all critical architectural branches have been traversed and resolved:
+- Present a concise summary of all agreed-upon decisions.
+- Suggest transitioning to specification generation via `/to-spec`.
+
+---
+
+## Citations & Provenance
+1. **Socratic Elicitation**: Plato. *Meno & The Theaetetus* (The Maieutic Method of inquiry).
+2. **Domain-Driven Design (Ubiquitous Language)**: Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+3. **Agent Decision-Tree Traversals**: Russell, S., & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach (4th ed.)*. Pearson (Chapter 3: Search and Problem Solving).
+4. **Harness Implementation Reference**: Built-in Antigravity `/grill-me` protocol and Anthropic Claude Code requirements alignment workflows.
+
+---
+
+### `/grill-me-with-docs`
+Description: Documentation-grounded requirements interview. Retrieves official documentation, API references, or web sources to validate architectural options before presenting choices.
+
+# Grill-Me-With-Docs: Grounded Socratic Elicitation Pattern
+
+## Intent
+Conduct a Socratic design interview where every technical choice is pre-validated against official library documentation, API specifications, and real-world reference architectures, avoiding hallucinations and deprecated patterns.
+
+## Theoretical Foundation
+Combines Retrieval-Augmented Generation (RAG) with Socratic inquiry. In software engineering, architectural decisions frequently depend on third-party API constraints, breaking changes, or version-specific features. Grounding options in authoritative documentation ensures all choices presented to the user are viable and state-of-the-art.
+
+## Operational Workflow
+
+### Step 1: Query & Verify Documentation
+Before posing any design branch to the user involving libraries, tools, protocols, or external services:
+1. Identify relevant documentation resources (official docs, GitHub READMEs, OpenAPI specs, MDN, library source code).
+2. Use available retrieval tools (web search, documentation search, local package inspection) to retrieve exact version capabilities, breaking changes, and canonical recommendations.
+3. Verify that candidate approaches are currently supported and not deprecated.
+
+### Step 2: Formulate Grounded Questions
+When presenting options to the user:
+- Cite the official reference or API version for each candidate option (e.g., *"Based on FastAPI 0.110+ lifespan events..."* or *"According to PostgreSQL 16 pgvector benchmarks..."*).
+- Highlight official caveats, rate limits, licensing, or deprecation notices directly in the option descriptions.
+- Ensure the `(Recommended)` option aligns with current industry best practices and official framework documentation.
+
+### Step 3: Interactive Interview Protocol
+- Ask one question at a time.
+- Include 2 to 4 grounded options with brief rationale.
+- Prune impossible paths immediately based on retrieved constraints.
+- Link to relevant reference URLs or doc files in the rationale.
+
+### Step 4: Completion & Artifact Generation
+- Summarize the decisions, embedding authoritative doc links for each adopted component.
+- Recommend proceeding to `/to-spec` to lock in the grounded architecture.
+
+---
+
+## Citations & Provenance
+1. **Retrieval-Augmented Generation**: Lewis, P., et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS 2020. arXiv:2005.11401.
+2. **Context Engineering for Coding Assistants**: Anthropic Engineering (2024). *Effective Context Retrieval in Claude Code and Tool Grounding*.
+3. **API Specification Verification**: OpenAPI Initiative (2021). *OpenAPI Specification v3.1.0*.
+
+---
+
+### `/implement`
+Description: Executes tasks using Test-Driven Development (TDD) and atomic commits. Enforces Red-Green-Refactor cycles and regression verification.
+
+# Implement: Test-Driven Development & Atomic Execution Pattern
+
+## Intent
+Execute implementation tickets systematically using Test-Driven Development (TDD). Guarantee that every change is proven by a failing test first, brought to green with minimal clean code, refactored safely, and committed atomically.
+
+## Theoretical Foundation
+Rooted in Kent Beck's Test-Driven Development (TDD) and Martin Fowler's Refactoring methodology. Agents perform with highest reliability when bounded by strict feedback loops: the test suite acts as an objective oracle that validates code before human or review intervention.
+
+## Operational Workflow
+
+### Phase 1: Ticket Selection & Ingestion
+1. Inspect the ticket backlog (`docs/tickets/INDEX.md` or project board).
+2. Select the next unblocked ticket in topological dependency order.
+3. Mark ticket as `In Progress`.
+4. Read the target files and relevant specification sections.
+
+### Phase 2: Red Stage (Write Failing Test)
+1. Write a minimal unit or integration test that precisely captures the ticket's Acceptance Criteria.
+2. Run the project's test suite or ticket verification command:
+   - **Requirement**: The test MUST fail with the expected error (assertion failure or missing symbol).
+   - If the test passes immediately without code changes, the test is invalid or the feature already exists. Stop and reassess.
+
+### Phase 3: Green Stage (Minimal Implementation)
+1. Write the minimal code necessary to make the failing test pass.
+2. Avoid premature optimization, unrelated refactoring, or touching out-of-scope files.
+3. Re-run the verification command:
+   - **Requirement**: The test MUST pass completely.
+
+### Phase 4: Refactor Stage (Clean & Verify)
+1. Clean up implementation: eliminate duplication, improve variable naming, extract helper methods if needed.
+2. Ensure documentation and type annotations are complete.
+3. Re-run the full regression test suite (not just the new test) to confirm zero regressions:
+   \`\`\`bash
+   npm test # or pytest, cargo test, go test, etc.
+   \`\`\`
+4. Run project linters and static analysis.
+
+### Phase 5: Atomic Git Commit & Ticket Closure
+1. Stage only the files associated with the ticket:
+   \`\`\`bash
+   git add <target-files> <test-files>
+   \`\`\`
+2. Create a standardized Conventional Commit:
+   \`\`\`bash
+   git commit -m "feat(<scope>): [TASK-XYZ] <short description>"
+   \`\`\`
+3. Mark the ticket status as `Done` in `docs/tickets/INDEX.md`.
+4. Transition to next ticket, or invoke `/code-review` if a milestone is reached.
+
+---
+
+## Citations & Provenance
+1. **Test-Driven Development**: Beck, K. (2002). *Test-Driven Development: By Example*. Addison-Wesley Professional.
+2. **Refactoring**: Fowler, M. (1999). *Refactoring: Improving the Design of Existing Code*. Addison-Wesley.
+3. **Conventional Commits**: Conventional Commits Specification v1.0.0 (https://www.conventionalcommits.org/).
+4. **Agentic Code Synthesis Evaluation**: Chen, M., et al. (2021). *Evaluating Large Language Models Trained on Code (HumanEval)*. arXiv:2107.03374.
+
+---
+
+### `/retro-learn`
+Description: Post-session reflection and continual learning. Extracts lessons from errors, user corrections, and project patterns to update persistent harness rules.
+
+# Retro-Learn: Continual Learning & Rule Distillation Pattern
+
+## Intent
+Analyze the recent interactive session, debugging trail, tool failures, or explicit user corrections to distill permanent, reusable lessons. Update the repository's harness rules to ensure future agent sessions never repeat the same mistakes.
+
+## Theoretical Foundation
+Inspired by the **Voyager Skill Library** (Wang et al., 2023) and **MemGPT / Persistent Context Engineering** (Packer et al., 2023). Agents lack persistent weight updates across sessions; their memory resides in repository context files (`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `.clinerules`). Distilling atomic guidelines into these files creates an evolutionary learning loop.
+
+## Operational Workflow
+
+### Step 1: Retrospective Trajectory Analysis
+Inspect the session transcript or conversation history for:
+1. **User Corrections**: Direct statements where the user had to correct an assumption, style choice, or architectural decision.
+2. **Tool / Command Failures**: Shell commands that failed due to environment assumptions (e.g. wrong package manager, missing environment variables, port conflicts).
+3. **Flaky Tests & Bug Reversals**: Code that had to be rewritten after initial attempts broke tests.
+
+### Step 2: Lesson Distillation & Generalization
+Convert transient mistakes into generalized, actionable rules following these criteria:
+- **Concise & Imperative**: Use direct instructions (e.g., *"Always pass `--frozen-lockfile` to pnpm"* rather than *"I learned that pnpm fails unless..."*).
+- **Non-Redundant**: Verify that the rule does not already exist in the harness rule file.
+- **Root Cause Focused**: Target the systemic reason the mistake occurred.
+- **Token Budget Conscious**: Keep additions strictly under 3 sentences to avoid context window bloat.
+
+### Step 3: Harness Target Identification & Update
+Identify which harness memory file is in use and append the distilled rule under the appropriate section:
+
+| Harness | Target Memory File | Section |
+| :--- | :--- | :--- |
+| **Claude Code** | `CLAUDE.md` | `## Guidelines & Idioms` |
+| **Antigravity / AGY** | `GEMINI.md` or `.agents/rules/*.md` | `## Project Idioms` |
+| **Cursor** | `.cursor/rules/*.mdc` or `.cursorrules` | Relevant rule category |
+| **Roo / Cline** | `.clinerules` | `## Learned Conventions` |
+| **Windsurf** | `.windsurfrules` | `## Project Rules` |
+| **Universal / Copilot** | `.github/copilot-instructions.md` | `## Coding Standards` |
+
+### Step 4: Verification & User Confirmation
+- Present the extracted rules to the user.
+- Show the unified diff before modifying the memory file.
+- Confirm that the rule accurately reflects user expectations and project standards.
+
+---
+
+## Citations & Provenance
+1. **Voyager Skill Library**: Wang, G., Xie, Y., Jiang, Y., Mandlekar, A., Xiao, C., Zhu, Y., Fan, L., & Anandkumar, A. (2023). *Voyager: An Open-Ended Embodied Agent with Large Language Models*. arXiv:2305.16291.
+2. **Persistent Memory in Language Agents**: Packer, C., Fang, V., Shlapentokh-Rothman, S. G., Shakir, K., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as Operating Systems*. arXiv:2310.08560.
+3. **Claude Code Memory Architecture**: Anthropic Engineering (2025). *Memory Systems and Persistent Project Conventions in Claude Code*.
+4. **Antigravity Rule Evolution**: Google DeepMind (2024). *Antigravity Customization System: Dynamic Rule & Skill Accumulation*.
+
+---
+
+### `/schedule-loop`
+Description: Idempotent periodic reconciliation loop pattern for recurring maintenance, health checks, dependency monitoring, and automated triage.
+
+# Schedule-Loop: Idempotent Periodic Reconciliation Pattern
+
+## Intent
+Establish an autonomous recurring execution loop (via cron, timers, or daemon schedulers) that periodically audits the repository, reconciles state drift, updates dependencies, runs smoke tests, or triages incoming issues without manual triggering.
+
+## Theoretical Foundation
+Inspired by the **Kubernetes Control Loop (Reconciliation Pattern)**: *Observe Current State $\to$ Compare with Desired State $\to$ Reconcile Differences*. To run safely unattended, loops must be **strictly idempotent**: executing 10 times consecutively must yield the exact same end state as executing once.
+
+## Core Operational Principles
+
+1. **Strict Idempotency**: Every operation must verify whether changes are actually required before modifying files or creating commits.
+2. **Deterministic Timeouts & Jitter**: Avoid synchronous polling; use native scheduling tools (e.g. Antigravity `schedule`, cron, or GitHub Actions scheduled workflows) with jitter to prevent thunderous herds.
+3. **Failure Isolation & Non-blocking**: A failure in one recurring check must log an alert and terminate cleanly without locking files or hanging background processes.
+4. **State Checkpointing**: Store last-run timestamps, commit hashes, or state tokens in a lightweight persistent file (e.g. `.agent-state.json`).
+
+## Operational Workflow
+
+```mermaid
+flowchart TD
+    Trigger[Timer / Cron / Schedule Fired] --> CheckState[1. Read Last Checkpoint & State]
+    CheckState --> Observe[2. Observe Environment & Git Status]
+    Observe --> Diff{3. State Drift Detected?}
+    Diff -- No --> LogClean[Log 'No Action Required' & Sleep]
+    Diff -- Yes --> Execute[4. Execute Idempotent Reconcile Action]
+    Execute --> Verify[5. Verify Health & Tests Pass]
+    Verify -- Passed --> Commit[6. Update Checkpoint & Commit/Alert]
+    Verify -- Failed --> Alert[Alert / Log Error & Halt]
+```
+
+### Step 1: Trigger Configuration
+Configure the recurring schedule using the target environment's native scheduler:
+- In Antigravity: `schedule` tool with `CronExpression` or `DurationSeconds`.
+- In CI/CD: GitHub Actions `.github/workflows/reconcile.yml` on `schedule: - cron: '0 */6 * * *'`.
+- In CLI / Daemons: Systemd timer, launchd, or background shell loop with graceful signals.
+
+### Step 2: Observation & Diff
+- Check git remote for upstream updates (`git fetch`).
+- Run security audit (`npm audit`, `pip-audit`, `cargo audit`).
+- Check test health or lint cleanliness.
+
+### Step 3: Reconcile & Report
+- Apply fixes or updates if drift is found.
+- If changes are made, run tests to verify zero regressions.
+- If verified, write an atomic commit or open a draft PR.
+- Record execution summary and timestamp in `.agent-state.json`.
+
+---
+
+## Citations & Provenance
+1. **The Reconciliation Loop Pattern**: Burns, B. (2018). *Designing Distributed Systems: Patterns and Practices for Robust, Distributed Applications*. O'Reilly Media (Chapter 8: The Reconciler / Control Loop).
+2. **Site Reliability Engineering - Automated Remediation**: Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). *Site Reliability Engineering: How Google Runs Production Systems*. O'Reilly Media.
+3. **Antigravity Scheduler System**: Google DeepMind (2024). *Antigravity Task Scheduling & Reactive Timer Conditions*.
+
+---
+
+### `/self-critic`
+Description: Reflexion and verbal invariant verification pattern. Evaluates proposed actions, plans, or diffs against edge cases and invariants before execution.
+
+# Self-Critic: Reflexion & Verbal Invariant Verification Pattern
+
+## Intent
+Intercept an agent's plan, tool call, or code diff immediately before execution, subjecting it to an objective internal audit to catch hallucinations, broken invariants, unhandled edge cases, and unintended side effects.
+
+## Theoretical Foundation
+Rooted in the **Reflexion** framework (Shinn et al., 2023) and **Self-Refine** (Madaan et al., 2023). Language models suffer from forward-generation bias, where early minor errors compound into catastrophic failures. Forcing an explicit, detached self-criticism step breaks the error chain and dramatically raises solution accuracy.
+
+## Operational Workflow
+
+### Step 1: Pre-Execution Interception
+Before executing a significant change (e.g. running destructive shell commands, applying a large diff, or finalizing an architectural plan), pause and run the Self-Critic protocol.
+
+### Step 2: The Invariant & Hallucination Audit
+Inspect the proposed action against five foundational sanity checks:
+
+1. **Existence & Grounding Check**:
+   - Are any invoked imports, files, classes, CLI flags, or API methods fabricated or hallucinated?
+   - *Verification*: Confirm each referenced symbol exists in the codebase or official documentation.
+
+2. **Invariant & Boundary Audit**:
+   - What happens with empty inputs (`[]`, `""`, `None`, `0`, `NaN`)?
+   - What happens with maximal or overflow inputs (unbounded lists, large files)?
+   - Are idempotency and state boundaries respected?
+
+3. **Silent Side Effect Check**:
+   - Does this change accidentally alter global state, modify shared configuration, delete untracked files, or bypass authentication?
+
+4. **Regression & Blast Radius**:
+   - Will this change break downstream callers or external consumers of this interface?
+   - Is backward compatibility preserved?
+
+5. **Simplicity / Occam's Razor**:
+   - Is this the simplest possible solution?
+   - Does it introduce gratuitous complexity, unnecessary dependencies, or redundant abstractions?
+
+### Step 3: Verbal Evaluation & Score
+Produce a concise internal audit:
+- **Flaws Detected**: List any issues identified.
+- **Verdict**:
+  - `PASSED`: Plan/diff is watertight; proceed with execution.
+  - `REVISE`: Flaws found; detail exact adjustments needed and refine the action before executing.
+
+---
+
+## Citations & Provenance
+1. **Reflexion**: Shinn, N., Cassano, F., Labash, B., Gopinath, A., Narasimhan, K., & Yao, S. (2023). *Reflexion: Language Agents with Verbal Reinforcement Learning*. Advances in Neural Information Processing Systems (NeurIPS 2023). arXiv:2303.11366.
+2. **Self-Refine**: Madaan, A., Tandon, N., Gupta, P., Hallinan, S., Gao, L., Wiegreffe, S., ... & Clark, P. (2023). *Self-Refine: Iterative Refinement with Self-Feedback*. NeurIPS 2023. arXiv:2303.17651.
+3. **Large Language Models Cannot Self-Correct Without External Feedback**: Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X., & Zhou, D. (2023). ICLR 2024. arXiv:2310.01798.
+
+---
+
+### `/teamwork`
+Description: Hierarchical multi-agent coordinator-subagent orchestration pattern for parallelized, context-isolated task execution.
+
+# Teamwork: Hierarchical Multi-Agent Orchestration Pattern
+
+## Intent
+Decompose a large, multifaceted engineering challenge into specialized subtasks assigned to isolated subagents, coordinating their workflows, inputs, outputs, and quality gates to prevent context pollution and accelerate delivery.
+
+## Theoretical Foundation
+Rooted in the **Coordinator-Subagent Hierarchy** (AWS Agentic Patterns, Manning *Designing AI Agents*), Concurrency Control, and Message Passing Concurrency (Actor Model). Context bloat is the primary cause of agent degradation; delegating bounded subtasks to fresh contexts preserves high attention fidelity.
+
+## Team Topology & Roles
+
+```mermaid
+graph TD
+    Coordinator[Coordinator / Lead Agent] -->|Delegates Research| Researcher[Research Subagent]
+    Coordinator -->|Delegates Code Changes| Implementer[Implementer Subagent]
+    Implementer -->|Submits Diff| Reviewer[Reviewer & Test Subagent]
+    Reviewer -->|Pass / Fail Report| Coordinator
+    Researcher -->|Findings / Docs| Coordinator
+```
+
+### 1. The Coordinator (Parent Session)
+- Holds the master plan, DAG of tickets, and shared state.
+- Spawns subagents with specific, non-overlapping briefs.
+- Synthesizes findings, manages merge conflicts, and maintains communication with the user.
+
+### 2. The Researcher (Read-Only Subagent)
+- Operates in read-only mode to explore the codebase, search web docs, and trace call graphs.
+- Delivers a structured brief containing file paths, relevant symbols, and code snippets back to the Coordinator.
+- Never writes or edits code directly.
+
+### 3. The Implementer (Worker Subagent)
+- Receives a single atomic ticket and the Researcher's brief.
+- Implements tests and code changes strictly within assigned file boundaries.
+- Delivers git status, modified file paths, and test logs to the Coordinator.
+
+### 4. The Reviewer (Verification Subagent)
+- Runs an independent adversarial review and executes the full regression test suite.
+- Audits for regressions, security vulnerabilities, and adherence to specifications.
+- Returns an actionable verdict: `APPROVED` or `REJECTED` with exact remediation instructions.
+
+## Operational Workflow
+
+### Step 1: Task Contract Definition
+Before launching any subagent, the Coordinator writes an unambiguous task brief:
+- **Role & Capability Scope**
+- **Explicit Inputs**: Specification, target files, acceptance criteria.
+- **Expected Return Artifact**: Expected format, JSON/Markdown structure.
+
+### Step 2: Handoff & Asynchronous Execution
+- Launch subagent(s) using native harness subagent capabilities (e.g. `invoke_subagent` in AGY, custom subagents in Claude Code or Roo).
+- Avoid busy polling; await completion callbacks or messages.
+
+### Step 3: Conflict Resolution & Integration
+- Inspect outputs from completed subagents.
+- Ensure no out-of-bounds files were touched.
+- Run project-wide integration tests before confirming completion.
+
+---
+
+## Citations & Provenance
+1. **Coordinator-Subagent Hierarchies**: Amazon Web Services Architecture Team (2024). *Agentic Design Patterns: Hierarchical Delegation and Context Boundaries*. AWS Whitepaper.
+2. **Actor Model of Computation**: Hewitt, C., Bishop, P., & Steiger, R. (1973). *A Universal Modular ACTOR Formalism for Artificial Intelligence*. IJCAI'73.
+3. **Designing AI Agents**: Huang, J. (2024). *Designing AI Agents: Multi-Agent Collaboration and Task Swarms*. Manning Publications.
+4. **Antigravity Multi-Agent Protocol**: Google DeepMind (2024). *Subagent Lifecycle, Shared Workspaces, and Reactive Wakeup Protocol*.
+
+---
+
+### `/to-spec`
+Description: Transforms requirements, interview transcripts, or raw ideas into an authoritative, RFC-grade technical specification and PRD.
+
+# To-Spec: Spec-Driven Development Pattern
+
+## Intent
+Transform high-level feature requests, interview transcripts (such as from `/grill-me`), or design notes into an authoritative, unambiguous Technical Specification Document (RFC / PRD) before implementation starts.
+
+## Theoretical Foundation
+Rooted in Spec-Driven Development (SDD), Amazon PR/FAQ methodology, RFC 2119 requirement conventions, and Architecture Decision Records (ADRs). Writing specifications first eliminates ambiguity, sets explicit verification boundaries, and provides an objective benchmark for code review.
+
+## Standard Specification Structure
+When producing a specification, write it to `docs/specs/<feature-name>.md` (or the project's preferred docs directory) using the following sections:
+
+### 1. Metadata & Status
+- **Title**: Descriptive feature name
+- **Authors**: Author / Agent
+- **Date**: ISO-8601 date
+- **Status**: `Draft` | `In Review` | `Approved` | `Superseded`
+
+### 2. Context & Problem Statement
+- Why are we doing this?
+- What pain point or capability does this address?
+- What evidence or user feedback motivates this change?
+
+### 3. Goals & Non-Goals (Strict Boundary Setting)
+- **Goals**: Explicit, measurable outcomes that define success.
+- **Non-Goals (Out of Scope)**: Explicit list of what this project will *not* do, preventing scope creep.
+
+### 4. Normative Requirements (RFC 2119)
+Use standardized RFC 2119 keywords:
+- **MUST / SHALL**: Mandatory requirement.
+- **SHOULD**: Highly recommended unless strong justification exists.
+- **MAY**: Optional capability.
+
+### 5. Architectural Design & Component Diagram
+- High-level architecture and system boundaries.
+- Mermaid diagram showing data flow and component relationships.
+- File and directory changes (new files, modified files, deprecated files).
+
+### 6. Data Models & API Contracts
+- Exact schemas, TypeScript interfaces, Pydantic models, or protobufs.
+- Request/Response payloads with HTTP status codes or RPC signatures.
+- Error codes and exception taxonomy.
+
+### 7. Invariants & Security Considerations
+- Data invariants that must never be violated (e.g. idempotency, immutability, thread safety).
+- Authentication, authorization, sanitization, and secrets management.
+
+### 8. Failure Modes & Rollback Strategy
+- What happens when a downstream dependency fails?
+- Circuit breakers, timeout configurations, and fallback values.
+- Rollback procedure if deployment fails.
+
+## Transition
+Once the specification is written and accepted, use `/to-tickets` to break it into an executable task DAG.
+
+---
+
+## Citations & Provenance
+1. **RFC 2119**: Bradner, S. (1997). *Key words for use in RFCs to Indicate Requirement Levels*. Harvard University / IETF Best Current Practice 14.
+2. **Amazon PR/FAQ Methodology**: Bryar, C., & Carr, B. (2021). *Working Backwards: Insights, Stories, and Secrets from Inside Amazon*. St. Martin's Press.
+3. **Architecture Decision Records (ADR)**: Nygard, M. (2011). *Documenting Architecture Decisions*. Cognitect Blog.
+4. **ThoughtWorks RFC Guidelines**: ThoughtWorks Technology Radar (2020). *Lightweight Architecture Decision Records and Request for Comments*.
+
+---
+
+### `/to-tickets`
+Description: Decomposes a technical specification into an executable Directed Acyclic Graph (DAG) of atomic, verifiable tickets with strict acceptance criteria.
+
+# To-Tickets: DAG Task Decomposition Pattern
+
+## Intent
+Decompose an approved technical specification into an ordered, dependency-aware backlog of atomic, independently verifiable implementation tickets.
+
+## Theoretical Foundation
+Rooted in Directed Acyclic Graphs (DAG), Work Breakdown Structures (WBS), and Behavior-Driven Development (BDD). For autonomous agents, large tasks fail due to context overflow and error compounding. Breaking work into atomic tickets with explicit verification criteria bounds agent reasoning to a single verifiable unit of work.
+
+## Ticket Schema & Ordering Rules
+
+### Decomposition Principles
+1. **Atomicity**: Each ticket represents a single logical unit of change that can be implemented, tested, and committed in one pass.
+2. **Explicit Dependency DAG**: Every ticket lists its explicit upstream dependencies (`blocked_by`).
+3. **Automated Verification**: Every ticket MUST include a deterministic verification command (e.g., test command, linter, or health check script).
+4. **File Scope**: Every ticket defines the exact files and symbols it intends to touch to prevent merge conflicts in multi-agent workflows.
+
+### Standard Ticket Structure
+Store tickets in `docs/tickets/` or write a consolidated execution manifest to `docs/tickets/INDEX.md`:
+
+```markdown
+### [TASK-001] <Short Descriptive Title>
+- **Status**: `Ready` | `In Progress` | `Blocked` | `Done`
+- **Dependencies**: `None` | `[TASK-XYZ]`
+- **Target Files**:
+  - `src/models/user.py`
+  - `tests/test_user.py`
+- **Specification Ref**: `docs/specs/feature.md#section-4`
+
+#### Description
+Concise summary of the architectural work required.
+
+#### Acceptance Criteria (BDD / Gherkin)
+- **Given** an unauthenticated session
+- **When** the login endpoint receives invalid credentials
+- **Then** it must return HTTP 401 with error code `INVALID_CREDENTIALS`
+
+#### Verification Command
+\`\`\`bash
+pytest tests/test_user.py -k "test_invalid_credentials"
+\`\`\`
+```
+
+## Topological Ordering Protocol
+1. Calculate the topological sort of the ticket DAG.
+2. Verify there are no circular dependencies.
+3. Group independent tickets that can be executed in parallel (e.g. Phase 1 Foundations -> Phase 2 Core -> Phase 3 Polish).
+4. Transition to `/implement` to execute tickets in topological order.
+
+---
+
+## Citations & Provenance
+1. **Topological Sorting in Project Scheduling**: Kahn, A. B. (1962). *Topological sorting of large networks*. Communications of the ACM, 5(11), 558-562.
+2. **Behavior-Driven Development (BDD)**: North, D. (2006). *Introducing BDD*. Better Software Magazine.
+3. **Work Breakdown Structure (WBS)**: Project Management Institute (2019). *Practice Standard for Work Breakdown Structures - Third Edition*.
+4. **Agent Context Partitioning**: Anthropic Engineering (2024). *Preventing Context Degradation through Task Decomposition in Claude Code*.
+
+---
+
+### `/visualize`
+Description: Architecture and flow visualization pattern. Generates standardized, syntactically valid Mermaid and C4 diagrams for system designs, data flows, and state machines.
+
+# Visualize: Architecture & Flow Visualization Pattern
+
+## Intent
+Transform textual architectures, complex algorithms, multi-agent interactions, and data models into unambiguous visual diagrams using standard Mermaid syntax.
+
+## Theoretical Foundation
+Rooted in cognitive load theory and the **C4 Model for Software Architecture** (Brown, 2018). Visual models ground abstract system descriptions, making boundaries, data flows, and state transitions instantly verifiable by humans and agents alike.
+
+## Standard Diagram Archetypes
+
+### 1. Component & Boundary Architecture (C4 Container / Component)
+Use `flowchart TD` or `flowchart LR` with subgraphs to depict architectural layers:
+
+```mermaid
+flowchart TD
+    subgraph Client["Client Layer"]
+        Web["Web Application (React)"]
+        CLI["CLI Tool (Python)"]
+    end
+
+    subgraph Gateway["API Gateway"]
+        Proxy["Reverse Proxy / Nginx"]
+        Auth["Auth Service (JWT)"]
+    end
+
+    subgraph Core["Core Services"]
+        App["Application Engine"]
+        Worker["Async Background Worker"]
+    end
+
+    subgraph Data["Persistence Layer"]
+        DB[("PostgreSQL")]
+        Queue[("Redis Queue")]
+    end
+
+    Web --> Proxy
+    CLI --> Proxy
+    Proxy --> Auth
+    Auth --> App
+    App --> Queue
+    Queue --> Worker
+    Worker --> DB
+    App --> DB
+```
+
+### 2. Request / Response & Protocol Flow (Sequence Diagram)
+Use `sequenceDiagram` with activation lifelines to show chronological interactions:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant Agent as Coding Agent
+    participant Tool as Tool Runner
+    participant Git as Version Control
+
+    User->>Agent: Request feature implementation
+    Agent->>Tool: Run failing test (Red)
+    Tool-->>Agent: Test failed as expected
+    Agent->>Tool: Write minimal code (Green)
+    Agent->>Tool: Run test suite
+    Tool-->>Agent: All tests passed
+    Agent->>Git: Commit atomic change
+    Git-->>Agent: Commit hash generated
+    Agent-->>User: Report completed task
+```
+
+### 3. State Machines & Lifecycles (State Diagram)
+Use `stateDiagram-v2` for entity states, task statuses, or connection lifecycles:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> InReview: Submit for Review
+    InReview --> Approved: Pass Verification
+    InReview --> NeedsChanges: Blocker Found
+    NeedsChanges --> InReview: Resubmit Fix
+    Approved --> InProgress: Start Implementation
+    InProgress --> Completed: All Tests Pass
+    Completed --> [*]
+```
+
+### 4. Data Models & Relationships (Entity-Relationship Diagram)
+Use `erDiagram` for relational schemas and domain models:
+
+```mermaid
+erDiagram
+    PROJECT ||--o{ SPECIFICATION : contains
+    SPECIFICATION ||--o{ TICKET : decomposes_into
+    TICKET ||--o{ COMMIT : implemented_by
+    TICKET {
+        string id PK
+        string title
+        string status
+        string blocked_by
+    }
+```
+
+## Mermaid Syntax Safety Rules
+1. **Always Quote Node Labels with Special Characters**:
+   - `id["Label (Extra Info)"]` instead of `id[Label (Extra Info)]`.
+2. **Supported Diagram Types Only**:
+   - Flowcharts (`flowchart TD`), Sequence (`sequenceDiagram`), State (`stateDiagram-v2`), Class (`classDiagram`), ER (`erDiagram`).
+3. **Avoid Raw HTML in Node Text**: Use pure Markdown or clean text inside node strings.
+
+---
+
+## Citations & Provenance
+1. **The C4 Model for Software Architecture**: Brown, S. (2018). *Software Architecture for Developers: Visualise, document and explore your software architecture*. Leanpub.
+2. **Mermaid Graphing Standard**: Sveidqvist, K., et al. (2014-2026). *Mermaid: Markdown-inspired syntax for generating charts and diagrams* (https://mermaid.js.org/).
+3. **Cognitive Load Theory in Software Visualization**: Sweller, J. (2011). *Cognitive Load Theory*. Psychology of Learning and Motivation, Vol. 55.
+
+---

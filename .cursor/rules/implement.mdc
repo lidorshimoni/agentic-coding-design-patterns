@@ -1,0 +1,64 @@
+---
+description: Executes tasks using Test-Driven Development (TDD) and atomic commits. Enforces Red-Green-Refactor cycles and regression verification.
+globs: *
+alwaysApply: false
+---
+
+# /implement
+
+# Implement: Test-Driven Development & Atomic Execution Pattern
+
+## Intent
+Execute implementation tickets systematically using Test-Driven Development (TDD). Guarantee that every change is proven by a failing test first, brought to green with minimal clean code, refactored safely, and committed atomically.
+
+## Theoretical Foundation
+Rooted in Kent Beck's Test-Driven Development (TDD) and Martin Fowler's Refactoring methodology. Agents perform with highest reliability when bounded by strict feedback loops: the test suite acts as an objective oracle that validates code before human or review intervention.
+
+## Operational Workflow
+
+### Phase 1: Ticket Selection & Ingestion
+1. Inspect the ticket backlog (`docs/tickets/INDEX.md` or project board).
+2. Select the next unblocked ticket in topological dependency order.
+3. Mark ticket as `In Progress`.
+4. Read the target files and relevant specification sections.
+
+### Phase 2: Red Stage (Write Failing Test)
+1. Write a minimal unit or integration test that precisely captures the ticket's Acceptance Criteria.
+2. Run the project's test suite or ticket verification command:
+   - **Requirement**: The test MUST fail with the expected error (assertion failure or missing symbol).
+   - If the test passes immediately without code changes, the test is invalid or the feature already exists. Stop and reassess.
+
+### Phase 3: Green Stage (Minimal Implementation)
+1. Write the minimal code necessary to make the failing test pass.
+2. Avoid premature optimization, unrelated refactoring, or touching out-of-scope files.
+3. Re-run the verification command:
+   - **Requirement**: The test MUST pass completely.
+
+### Phase 4: Refactor Stage (Clean & Verify)
+1. Clean up implementation: eliminate duplication, improve variable naming, extract helper methods if needed.
+2. Ensure documentation and type annotations are complete.
+3. Re-run the full regression test suite (not just the new test) to confirm zero regressions:
+   \`\`\`bash
+   npm test # or pytest, cargo test, go test, etc.
+   \`\`\`
+4. Run project linters and static analysis.
+
+### Phase 5: Atomic Git Commit & Ticket Closure
+1. Stage only the files associated with the ticket:
+   \`\`\`bash
+   git add <target-files> <test-files>
+   \`\`\`
+2. Create a standardized Conventional Commit:
+   \`\`\`bash
+   git commit -m "feat(<scope>): [TASK-XYZ] <short description>"
+   \`\`\`
+3. Mark the ticket status as `Done` in `docs/tickets/INDEX.md`.
+4. Transition to next ticket, or invoke `/code-review` if a milestone is reached.
+
+---
+
+## Citations & Provenance
+1. **Test-Driven Development**: Beck, K. (2002). *Test-Driven Development: By Example*. Addison-Wesley Professional.
+2. **Refactoring**: Fowler, M. (1999). *Refactoring: Improving the Design of Existing Code*. Addison-Wesley.
+3. **Conventional Commits**: Conventional Commits Specification v1.0.0 (https://www.conventionalcommits.org/).
+4. **Agentic Code Synthesis Evaluation**: Chen, M., et al. (2021). *Evaluating Large Language Models Trained on Code (HumanEval)*. arXiv:2107.03374.
