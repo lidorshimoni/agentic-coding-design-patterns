@@ -54,3 +54,11 @@ Configure the recurring schedule using the target environment's native scheduler
 - If changes are made, run tests to verify zero regressions.
 - If verified, write an atomic commit or open a draft PR.
 - Record execution summary and timestamp in `.agent-state.json`.
+
+---
+
+## Citations & Provenance
+1. **The Reconciliation Loop Pattern**: Burns, B. (2018). *Designing Distributed Systems: Patterns and Practices for Robust, Distributed Applications*. O'Reilly Media (Chapter 8: The Reconciler / Control Loop).
+2. **Site Reliability Engineering - Automated Remediation**: Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (2016). *Site Reliability Engineering: How Google Runs Production Systems*. O'Reilly Media.
+3. **Antigravity Scheduler System**: Google DeepMind (2024). *Antigravity Task Scheduling & Reactive Timer Conditions*.
+

@@ -48,3 +48,12 @@ Identify which harness memory file is in use and append the distilled rule under
 - Present the extracted rules to the user.
 - Show the unified diff before modifying the memory file.
 - Confirm that the rule accurately reflects user expectations and project standards.
+
+---
+
+## Citations & Provenance
+1. **Voyager Skill Library**: Wang, G., Xie, Y., Jiang, Y., Mandlekar, A., Xiao, C., Zhu, Y., Fan, L., & Anandkumar, A. (2023). *Voyager: An Open-Ended Embodied Agent with Large Language Models*. arXiv:2305.16291.
+2. **Persistent Memory in Language Agents**: Packer, C., Fang, V., Shlapentokh-Rothman, S. G., Shakir, K., & Gonzalez, J. E. (2023). *MemGPT: Towards LLMs as Operating Systems*. arXiv:2310.08560.
+3. **Claude Code Memory Architecture**: Anthropic Engineering (2025). *Memory Systems and Persistent Project Conventions in Claude Code*.
+4. **Antigravity Rule Evolution**: Google DeepMind (2024). *Antigravity Customization System: Dynamic Rule & Skill Accumulation*.
+

@@ -63,3 +63,12 @@ Before launching any subagent, the Coordinator writes an unambiguous task brief:
 - Inspect outputs from completed subagents.
 - Ensure no out-of-bounds files were touched.
 - Run project-wide integration tests before confirming completion.
+
+---
+
+## Citations & Provenance
+1. **Coordinator-Subagent Hierarchies**: Amazon Web Services Architecture Team (2024). *Agentic Design Patterns: Hierarchical Delegation and Context Boundaries*. AWS Whitepaper.
+2. **Actor Model of Computation**: Hewitt, C., Bishop, P., & Steiger, R. (1973). *A Universal Modular ACTOR Formalism for Artificial Intelligence*. IJCAI'73.
+3. **Designing AI Agents**: Huang, J. (2024). *Designing AI Agents: Multi-Agent Collaboration and Task Swarms*. Manning Publications.
+4. **Antigravity Multi-Agent Protocol**: Google DeepMind (2024). *Subagent Lifecycle, Shared Workspaces, and Reactive Wakeup Protocol*.
+

@@ -61,3 +61,12 @@ Use standardized RFC 2119 keywords:
 
 ## Transition
 Once the specification is written and accepted, use `/to-tickets` to break it into an executable task DAG.
+
+---
+
+## Citations & Provenance
+1. **RFC 2119**: Bradner, S. (1997). *Key words for use in RFCs to Indicate Requirement Levels*. Harvard University / IETF Best Current Practice 14.
+2. **Amazon PR/FAQ Methodology**: Bryar, C., & Carr, B. (2021). *Working Backwards: Insights, Stories, and Secrets from Inside Amazon*. St. Martin's Press.
+3. **Architecture Decision Records (ADR)**: Nygard, M. (2011). *Documenting Architecture Decisions*. Cognitect Blog.
+4. **ThoughtWorks RFC Guidelines**: ThoughtWorks Technology Radar (2020). *Lightweight Architecture Decision Records and Request for Comments*.
+

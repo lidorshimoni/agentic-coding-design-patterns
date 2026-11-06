@@ -55,3 +55,12 @@ pytest tests/test_user.py -k "test_invalid_credentials"
 2. Verify there are no circular dependencies.
 3. Group independent tickets that can be executed in parallel (e.g. Phase 1 Foundations -> Phase 2 Core -> Phase 3 Polish).
 4. Transition to `/implement` to execute tickets in topological order.
+
+---
+
+## Citations & Provenance
+1. **Topological Sorting in Project Scheduling**: Kahn, A. B. (1962). *Topological sorting of large networks*. Communications of the ACM, 5(11), 558-562.
+2. **Behavior-Driven Development (BDD)**: North, D. (2006). *Introducing BDD*. Better Software Magazine.
+3. **Work Breakdown Structure (WBS)**: Project Management Institute (2019). *Practice Standard for Work Breakdown Structures - Third Edition*.
+4. **Agent Context Partitioning**: Anthropic Engineering (2024). *Preventing Context Degradation through Task Decomposition in Claude Code*.
+

@@ -113,3 +113,11 @@ erDiagram
 2. **Supported Diagram Types Only**:
    - Flowcharts (`flowchart TD`), Sequence (`sequenceDiagram`), State (`stateDiagram-v2`), Class (`classDiagram`), ER (`erDiagram`).
 3. **Avoid Raw HTML in Node Text**: Use pure Markdown or clean text inside node strings.
+
+---
+
+## Citations & Provenance
+1. **The C4 Model for Software Architecture**: Brown, S. (2018). *Software Architecture for Developers: Visualise, document and explore your software architecture*. Leanpub.
+2. **Mermaid Graphing Standard**: Sveidqvist, K., et al. (2014-2026). *Mermaid: Markdown-inspired syntax for generating charts and diagrams* (https://mermaid.js.org/).
+3. **Cognitive Load Theory in Software Visualization**: Sweller, J. (2011). *Cognitive Load Theory*. Psychology of Learning and Motivation, Vol. 55.
+

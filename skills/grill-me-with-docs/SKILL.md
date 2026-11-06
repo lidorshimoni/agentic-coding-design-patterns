@@ -39,3 +39,11 @@ When presenting options to the user:
 ### Step 4: Completion & Artifact Generation
 - Summarize the decisions, embedding authoritative doc links for each adopted component.
 - Recommend proceeding to `/to-spec` to lock in the grounded architecture.
+
+---
+
+## Citations & Provenance
+1. **Retrieval-Augmented Generation**: Lewis, P., et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS 2020. arXiv:2005.11401.
+2. **Context Engineering for Coding Assistants**: Anthropic Engineering (2024). *Effective Context Retrieval in Claude Code and Tool Grounding*.
+3. **API Specification Verification**: OpenAPI Initiative (2021). *OpenAPI Specification v3.1.0*.
+

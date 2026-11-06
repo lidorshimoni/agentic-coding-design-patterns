@@ -51,3 +51,11 @@ Produce a concise internal audit:
 - **Verdict**:
   - `PASSED`: Plan/diff is watertight; proceed with execution.
   - `REVISE`: Flaws found; detail exact adjustments needed and refine the action before executing.
+
+---
+
+## Citations & Provenance
+1. **Reflexion**: Shinn, N., Cassano, F., Labash, B., Gopinath, A., Narasimhan, K., & Yao, S. (2023). *Reflexion: Language Agents with Verbal Reinforcement Learning*. Advances in Neural Information Processing Systems (NeurIPS 2023). arXiv:2303.11366.
+2. **Self-Refine**: Madaan, A., Tandon, N., Gupta, P., Hallinan, S., Gao, L., Wiegreffe, S., ... & Clark, P. (2023). *Self-Refine: Iterative Refinement with Self-Feedback*. NeurIPS 2023. arXiv:2303.17651.
+3. **Large Language Models Cannot Self-Correct Without External Feedback**: Huang, J., Chen, X., Mishra, S., Zheng, H. S., Yu, A. W., Song, X., & Zhou, D. (2023). ICLR 2024. arXiv:2310.01798.
+

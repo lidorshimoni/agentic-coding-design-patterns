@@ -42,3 +42,12 @@ Execute the interview following strict operational rules:
 When all critical architectural branches have been traversed and resolved:
 - Present a concise summary of all agreed-upon decisions.
 - Suggest transitioning to specification generation via `/to-spec`.
+
+---
+
+## Citations & Provenance
+1. **Socratic Elicitation**: Plato. *Meno & The Theaetetus* (The Maieutic Method of inquiry).
+2. **Domain-Driven Design (Ubiquitous Language)**: Evans, E. (2003). *Domain-Driven Design: Tackling Complexity in the Heart of Software*. Addison-Wesley.
+3. **Agent Decision-Tree Traversals**: Russell, S., & Norvig, P. (2020). *Artificial Intelligence: A Modern Approach (4th ed.)*. Pearson (Chapter 3: Search and Problem Solving).
+4. **Harness Implementation Reference**: Built-in Antigravity `/grill-me` protocol and Anthropic Claude Code requirements alignment workflows.
+

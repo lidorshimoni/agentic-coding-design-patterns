@@ -56,3 +56,12 @@ Rooted in Kent Beck's Test-Driven Development (TDD) and Martin Fowler's Refactor
    \`\`\`
 3. Mark the ticket status as `Done` in `docs/tickets/INDEX.md`.
 4. Transition to next ticket, or invoke `/code-review` if a milestone is reached.
+
+---
+
+## Citations & Provenance
+1. **Test-Driven Development**: Beck, K. (2002). *Test-Driven Development: By Example*. Addison-Wesley Professional.
+2. **Refactoring**: Fowler, M. (1999). *Refactoring: Improving the Design of Existing Code*. Addison-Wesley.
+3. **Conventional Commits**: Conventional Commits Specification v1.0.0 (https://www.conventionalcommits.org/).
+4. **Agentic Code Synthesis Evaluation**: Chen, M., et al. (2021). *Evaluating Large Language Models Trained on Code (HumanEval)*. arXiv:2107.03374.
+

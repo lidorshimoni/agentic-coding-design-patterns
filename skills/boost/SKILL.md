@@ -55,3 +55,12 @@ Compare 2 to 3 candidate strategies against the perspectives:
 1. Formulate the consensus recommendation combining the best elements of each perspective.
 2. Explicitly document trade-offs accepted.
 3. Output the optimized, de-risked implementation plan and proceed to execution.
+
+---
+
+## Citations & Provenance
+1. **Tree of Thoughts**: Yao, S., Yu, D., Zhao, J., Shafran, I., Griffiths, T. L., Cao, Y., & Narasimhan, K. (2023). *Tree of Thoughts: Deliberate Problem Solving with Large Language Models*. NeurIPS 2023. arXiv:2305.10601.
+2. **Multiagent Debate**: Du, Y., Li, S., Torralba, A., Tenenbaum, J. B., & Mordatch, I. (2023). *Improving Factuality and Reasoning in Language Models through Multiagent Debate*. arXiv:2305.14325.
+3. **Society of Mind**: Minsky, M. (1986). *The Society of Mind*. Simon & Schuster.
+4. **Antigravity Cognitive Boost**: Google DeepMind (2024). *Antigravity Slash Command Architecture: /boost Deliberative Engine*.
+

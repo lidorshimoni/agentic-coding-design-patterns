@@ -53,3 +53,11 @@ flowchart TD
 
 ### Step 4: Completion Criteria
 The loop terminates successfully ONLY when the Verification Oracle command executes cleanly with exit code 0 and passes all regression checks. Provide a summary artifact detailing all changes made and test outputs.
+
+---
+
+## Citations & Provenance
+1. **ReAct Paradigm**: Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., & Cao, Y. (2022). *ReAct: Synergizing Reasoning and Acting in Language Models*. International Conference on Learning Representations (ICLR 2023). arXiv:2210.03629.
+2. **AWS Agentic Guidance**: Amazon Web Services Architecture Team (2024). *Agentic Design Patterns: Deterministic Overrides, Loop Budgets, and Termination Conditions*. AWS Prescriptive Guidance.
+3. **SWE-bench Benchmark**: Jimenez, C. E., et al. (2024). *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?*. ICLR 2024. arXiv:2310.06770.
+

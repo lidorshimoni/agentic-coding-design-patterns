@@ -51,3 +51,12 @@ For every `[BLOCKER]` or `[WARNING]`, provide:
 1. Exact file path and line number range.
 2. Root cause explanation of the risk.
 3. Drop-in replacement code snippet.
+
+---
+
+## Citations & Provenance
+1. **Formal Inspection Methodology**: Fagan, M. E. (1976). *Design and code inspections to reduce errors in program development*. IBM Systems Journal, 15(3), 182-211.
+2. **Google Engineering Practices**: Google Engineering (2020). *Google's Code Review Developer Guide* (https://google.github.io/eng-practices/review/).
+3. **Application Security Standards**: OWASP Foundation (2021). *OWASP Top Ten Web Application Security Risks*.
+4. **Automated Static Analysis Principles**: McConnell, S. (2004). *Code Complete (2nd ed.)*. Microsoft Press.
+
