@@ -129,12 +129,11 @@ Run the following workflow instructions for the provided input: $ARGUMENTS
         ""
     ])
 
-    if not claude_md.exists():
+    if not claude_md.exists() or "## Available Slash Commands" in claude_md.read_text(encoding="utf-8"):
         claude_md.write_text("\n".join(overview_lines), encoding="utf-8")
     else:
         existing = claude_md.read_text(encoding="utf-8")
-        if "## Available Slash Commands" not in existing:
-            claude_md.write_text(existing.rstrip() + "\n\n" + "\n".join(overview_lines[2:]), encoding="utf-8")
+        claude_md.write_text(existing.rstrip() + "\n\n" + "\n".join(overview_lines[2:]), encoding="utf-8")
 
     print(f"  ✓ Exported Claude Code: {len(skills)} commands into {commands_dir}")
 
@@ -148,6 +147,12 @@ def export_antigravity(skills: List[Dict[str, Any]], target_dir: Path):
         dest_dir = agents_dir / skill["name"]
         dest_dir.mkdir(parents=True, exist_ok=True)
         (dest_dir / "SKILL.md").write_text(skill["raw"], encoding="utf-8")
+
+        # Copy any auxiliary files from the source skill directory (e.g. *-FORMAT.md)
+        src_dir = skill["path"].parent
+        for extra_file in src_dir.iterdir():
+            if extra_file.is_file() and extra_file.name != "SKILL.md":
+                (dest_dir / extra_file.name).write_bytes(extra_file.read_bytes())
 
     # Update or create GEMINI.md
     gemini_md = target_dir / "GEMINI.md"
@@ -168,12 +173,11 @@ def export_antigravity(skills: List[Dict[str, Any]], target_dir: Path):
         ""
     ])
 
-    if not gemini_md.exists():
+    if not gemini_md.exists() or "## Mounted Agent Skills" in gemini_md.read_text(encoding="utf-8"):
         gemini_md.write_text("\n".join(overview_lines), encoding="utf-8")
     else:
         existing = gemini_md.read_text(encoding="utf-8")
-        if "## Mounted Agent Skills" not in existing:
-            gemini_md.write_text(existing.rstrip() + "\n\n" + "\n".join(overview_lines[2:]), encoding="utf-8")
+        gemini_md.write_text(existing.rstrip() + "\n\n" + "\n".join(overview_lines[2:]), encoding="utf-8")
 
     print(f"  ✓ Exported Antigravity: {len(skills)} skills into {agents_dir}")
 

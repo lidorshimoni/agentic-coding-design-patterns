@@ -24,7 +24,7 @@ Designed to be canonical, portable, and ready to sync into **any** agent harness
 
 ---
 
-## 🧭 The 13 Core Agentic Patterns & Commands
+## 🧭 The 15 Core Agentic Patterns & Commands
 
 ```mermaid
 flowchart LR
@@ -35,6 +35,7 @@ flowchart LR
         S["/to-spec<br/><i>(RFC 2119 PRD)</i>"]
         T["/to-tickets<br/><i>(DAG Decomposition)</i>"]
         CW["/clear-writing<br/><i>(Empirical Clarity)</i>"]
+        TE["/teach<br/><i>(Pedagogical Workspace)</i>"]
     end
 
     subgraph Execution["2. Execution & Quality"]
@@ -64,6 +65,7 @@ flowchart LR
 | **`/grill-me-with-docs`** | Discovery | Pre-retrieves official library documentation before asking technical architecture questions. | Retrieval-Augmented Generation (Lewis et al.) |
 | **`/to-spec`** | Discovery | Converts requirements and transcripts into an RFC-grade specification with strict boundaries. | RFC 2119 (Bradner); Amazon PR/FAQ; ADR (Nygard) |
 | **`/to-tickets`** | Discovery | Breaks specifications into an ordered Directed Acyclic Graph (DAG) of atomic, verifiable tickets. | Work Breakdown Structure; BDD (North); Kahn DAG |
+| **`/teach`** | Learning | Stateful multi-session learning workspace with retrieval practice, ZPD, and ADR-style learning records. | Desirable Difficulties (Bjork); ZPD (Vygotsky); AI Hero (Pocock) |
 | **`/implement`** | Execution | Executes tickets using Test-Driven Development (Red-Green-Refactor) and atomic git commits. | Test-Driven Development (Beck); Fowler Refactoring |
 | **`/self-critic`** | Quality | Pre-execution internal audit checking for hallucinations, broken invariants, and boundary conditions. | Reflexion (Shinn et al., NeurIPS 2023); Self-Refine |
 | **`/code-review`** | Quality | Senior staff adversarial code review evaluating correctness, security, concurrency, and performance. | Fagan Inspection; Google Code Review Practices; OWASP |

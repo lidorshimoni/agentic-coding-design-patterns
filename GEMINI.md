@@ -2,6 +2,7 @@
 
 ## Mounted Agent Skills
 - **boost**: Deep cognitive deliberation using Tree-of-Thoughts and multi-perspective expert debate before tackling complex, high-risk tasks.
+- **clear-writing**: Write, explain, or edit prose across any subject with maximum clarity and zero fluff. Blends ASD-STE100 Simplified Technical English clarity rules with Andrej Karpathy's pragmatic builder communication style. Features dual modes: default direct explanation (objective, active, <=25 words/sentence) and first-person builder/essay mode (grounded in hands-on work, honest hedging, dry wit, and quantitative precision).
 - **code-review**: Adversarial multi-lens code review. Evaluates pull requests or git diffs across correctness, security, concurrency, performance, and maintainability.
 - **goal**: Autonomous long-running execution loop. Drives complex objectives to completion using step budgets, empirical verification oracles, and state checkpointing.
 - **grill-me**: Interactive requirements elicitation interview. Walks down each branch of the design tree, resolving dependencies between decisions one-by-one with recommended options.
@@ -10,6 +11,7 @@
 - **retro-learn**: Post-session reflection and continual learning. Extracts lessons from errors, user corrections, and project patterns to update persistent harness rules.
 - **schedule-loop**: Idempotent periodic reconciliation loop pattern for recurring maintenance, health checks, dependency monitoring, and automated triage.
 - **self-critic**: Reflexion and verbal invariant verification pattern. Evaluates proposed actions, plans, or diffs against edge cases and invariants before execution.
+- **teach**: Multi-session stateful teaching workspace. Teaches any skill or concept across sessions using ZPD, retrieval practice, HTML lessons, and ADR-style learning records.
 - **teamwork**: Hierarchical multi-agent coordinator-subagent orchestration pattern for parallelized, context-isolated task execution.
 - **to-spec**: Transforms requirements, interview transcripts, or raw ideas into an authoritative, RFC-grade technical specification and PRD.
 - **to-tickets**: Decomposes a technical specification into an executable Directed Acyclic Graph (DAG) of atomic, verifiable tickets with strict acceptance criteria.

@@ -24,6 +24,7 @@ flowchart TD
         Spec["Spec-Driven Development (/to-spec)"]
         Decomp["DAG Decomposition (/to-tickets)"]
         Writing["Empirical Clarity & ASD-STE100 (/clear-writing)"]
+        Teach["Stateful Pedagogy (/teach)"]
     end
 
     subgraph Execution["2. Execution & Feedback"]
@@ -108,6 +109,11 @@ flowchart TD
 - **Core Mechanism**: Scheduled daemon / cron execution that periodically inspects repository state, compares it to desired state, and applies idempotent reconciliation (dependency updates, linting, flakiness detection).
 - **Why it Matters**: Automates continuous codebase hygiene without developer overhead.
 
+### Pattern L: Stateful Pedagogical Learning Workspace (`/teach`)
+- **Academic / Industry Basis**: Desirable Difficulties & Storage Strength (Bjork & Bjork, 2011); Zone of Proximal Development (Vygotsky, 1978); Cognitive Load Theory (Sweller, 1988); AI Hero Real Engineering Pedagogy (Pocock, 2026).
+- **Core Mechanism**: Transforms a directory into a persistent, multi-session learning workspace. Intercepts sessions to ground learning in a concrete `MISSION.md`, pre-curates high-trust citations in `RESOURCES.md`, constructs self-contained HTML lessons with clean Tufte typography, enforces effortful retrieval drills with balanced quiz design, and records ADR-style milestones in sequential `learning-records/` to dynamically track the learner's ZPD.
+- **Why it Matters**: Replaces superficial, ephemeral chat explanations with cumulative, durable long-term retention.
+
 ---
 
 ## 4. References & Academic Citations
@@ -121,3 +127,8 @@ flowchart TD
 8. **Beck, K. (2002)**. *Test-Driven Development: By Example*. Addison-Wesley.
 9. **Fagan, M. E. (1976)**. *Design and code inspections to reduce errors in program development*. IBM Systems Journal.
 10. **Bradner, S. (1997)**. *Key words for use in RFCs to Indicate Requirement Levels*. RFC 2119.
+11. **Pocock, M. (2026)**. *The /teach Skill - AI Skills for Real Engineers*. AI Hero (https://www.aihero.dev/skills-teach).
+12. **Bjork, E. L., & Bjork, R. A. (2011)**. *Making things hard on yourself, but in a good way: Creating desirable difficulties to enhance learning*. Psychology and the Real World, 2(1), 56-64.
+13. **Vygotsky, L. S. (1978)**. *Mind in Society: The Development of Higher Psychological Processes*. Harvard University Press.
+14. **Sweller, J. (1988)**. *Cognitive load during problem solving: Effects on learning*. Cognitive Science, 12(2), 257-285.
+15. **Roediger, H. L., & Karpicke, J. D. (2006)**. *Test-enhanced learning: Taking memory tests improves long-term retention*. Psychological Science, 17(3), 249-255.
